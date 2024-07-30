@@ -17,6 +17,7 @@ DoneWork _$DoneWorkFromJson(Map<String, dynamic> json) => DoneWork(
           ?.map(
               (e) => DetailDoneWorkBrigade.fromJson(e as Map<String, dynamic>))
           .toList(),
+      equipment: (json['equipment'] as num?)?.toInt(),
       linked_objects: json['linked_objects'] == null
           ? null
           : DetailDoneWorkLinkedObject.fromJson(
@@ -29,6 +30,7 @@ Map<String, dynamic> _$DoneWorkToJson(DoneWork instance) => <String, dynamic>{
       'period': instance.period,
       'work': instance.work,
       'machine': instance.machine,
+      'equipment': instance.equipment,
       'work_order': instance.work_order,
       'supervisor_progress_volume': instance.supervisor_progress_volume,
       'linked_objects': instance.linked_objects,
@@ -39,6 +41,8 @@ DetailDoneWorkLinkedObject _$DetailDoneWorkLinkedObjectFromJson(
         Map<String, dynamic> json) =>
     DetailDoneWorkLinkedObject(
       field: (json['field'] as num?)?.toInt(),
+      culture: (json['culture'] as num?)?.toInt(),
+      business_process: (json['business_process'] as num?)?.toInt(),
       machine: (json['machine'] as num?)?.toInt(),
       staff: (json['staff'] as num?)?.toInt(),
     );
@@ -49,6 +53,8 @@ Map<String, dynamic> _$DetailDoneWorkLinkedObjectToJson(
       'field': instance.field,
       'staff': instance.staff,
       'machine': instance.machine,
+      'business_process': instance.business_process,
+      'culture': instance.culture,
     };
 
 WorkOrderListDetail _$WorkOrderListDetailFromJson(Map<String, dynamic> json) =>

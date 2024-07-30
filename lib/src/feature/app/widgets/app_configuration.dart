@@ -23,6 +23,7 @@ class _AppConfigurationState extends State<AppConfiguration> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
       theme: AppTheme.light,
       title: 'AppOnTrackTest',
       routerConfig: appRouter.config(),

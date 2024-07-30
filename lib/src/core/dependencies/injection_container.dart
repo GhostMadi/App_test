@@ -12,10 +12,14 @@
 import 'package:flutter_application_2/src/feature/auth/logic/bloc/auth_bloc/auth_bloc.dart';
 import 'package:flutter_application_2/src/feature/auth/logic/bloc/refresh_bloc/refresh_bloc.dart';
 import 'package:flutter_application_2/src/feature/auth/logic/repository/auth_repository.dart';
+import 'package:flutter_application_2/src/feature/libraries/logic/business_processes_logic/bloc/detail_business_process_bloc.dart';
+import 'package:flutter_application_2/src/feature/libraries/logic/business_processes_logic/repository/business_processes_repository.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/company_id_logic/bloc/fetch_id_bloc.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/company_id_logic/repository/company_id_repository.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/done_work_logic/bloc/done_work_bloc.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/done_work_logic/repository/done_work_repository.dart';
+import 'package:flutter_application_2/src/feature/libraries/logic/equipment_logic/bloc/equipment_bloc.dart';
+import 'package:flutter_application_2/src/feature/libraries/logic/equipment_logic/repository/equipment_repository.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/fields_logic/bloc/field_bloc.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/fields_logic/repository/field_repository.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/machines_login/bloc/machines_bloc.dart';
@@ -46,6 +50,8 @@ Future<void> initGetIt() async {
       () => MachinesBloc(machinesRepository: sl<MachinesRepository>()));
   sl.registerFactory<StaffBloc>(
       () => StaffBloc(staffRepository: sl<StaffRepository>()));
+  sl.registerFactory<EquipmentBloc>(()=>EquipmentBloc(equipmentRepository: sl<EquipmentRepository>()));
+   sl.registerFactory<DetailBusinessProcessBloc>(()=>DetailBusinessProcessBloc(businessProcessesRepository: sl<BusinessProcessesRepository>()));
 
 //   //repos
   sl.registerLazySingleton<AuthRepository>(() => AuthRepoImpl());
@@ -55,4 +61,6 @@ Future<void> initGetIt() async {
   sl.registerLazySingleton<FieldRepository>(() => FieldRepoImpl());
   sl.registerLazySingleton<MachinesRepository>(() => MachinesRepoImpl());
   sl.registerLazySingleton<StaffRepository>(() => StaffRepoImpl());
+  sl.registerLazySingleton<EquipmentRepository>(()=>EquipmentRepoImpl());
+  sl.registerLazySingleton<BusinessProcessesRepository>(()=>BusinessProcessesRepoImpl());
 }

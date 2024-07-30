@@ -21,6 +21,16 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AllPage(),
       );
     },
+    AllTaskRoute.name: (routeData) {
+      final args = routeData.argsAs<AllTaskRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: AllTaskPage(
+          key: args.key,
+          id: args.id,
+        ),
+      );
+    },
     AppIndexedRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -34,9 +44,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     HomeRoute.name: (routeData) {
+      final args = routeData.argsAs<HomeRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const HomePage(),
+        child: HomePage(
+          key: args.key,
+          id: args.id,
+        ),
       );
     },
     IncidentRoute.name: (routeData) {
@@ -45,10 +59,20 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const IncidentPage(),
       );
     },
-    MyTasksRoute.name: (routeData) {
+    LiloRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const MyTasksPage(),
+        child: const LiloPage(),
+      );
+    },
+    MapRoute.name: (routeData) {
+      final args = routeData.argsAs<MapRouteArgs>();
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: MapPage(
+          key: args.key,
+          doneWorkList: args.doneWorkList,
+        ),
       );
     },
     NoticeRoute.name: (routeData) {
@@ -70,9 +94,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     TaskRoute.name: (routeData) {
+      final args = routeData.argsAs<TaskRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const TaskPage(),
+        child: TaskPage(
+          key: args.key,
+          id: args.id,
+        ),
       );
     },
   };
@@ -90,6 +118,44 @@ class AllRoute extends PageRouteInfo<void> {
   static const String name = 'AllRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [AllTaskPage]
+class AllTaskRoute extends PageRouteInfo<AllTaskRouteArgs> {
+  AllTaskRoute({
+    Key? key,
+    required String id,
+    List<PageRouteInfo>? children,
+  }) : super(
+          AllTaskRoute.name,
+          args: AllTaskRouteArgs(
+            key: key,
+            id: id,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'AllTaskRoute';
+
+  static const PageInfo<AllTaskRouteArgs> page =
+      PageInfo<AllTaskRouteArgs>(name);
+}
+
+class AllTaskRouteArgs {
+  const AllTaskRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final Key? key;
+
+  final String id;
+
+  @override
+  String toString() {
+    return 'AllTaskRouteArgs{key: $key, id: $id}';
+  }
 }
 
 /// generated route for
@@ -122,16 +188,39 @@ class AuthRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [HomePage]
-class HomeRoute extends PageRouteInfo<void> {
-  const HomeRoute({List<PageRouteInfo>? children})
-      : super(
+class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
+  HomeRoute({
+    Key? key,
+    required int? id,
+    List<PageRouteInfo>? children,
+  }) : super(
           HomeRoute.name,
+          args: HomeRouteArgs(
+            key: key,
+            id: id,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'HomeRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<HomeRouteArgs> page = PageInfo<HomeRouteArgs>(name);
+}
+
+class HomeRouteArgs {
+  const HomeRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final Key? key;
+
+  final int? id;
+
+  @override
+  String toString() {
+    return 'HomeRouteArgs{key: $key, id: $id}';
+  }
 }
 
 /// generated route for
@@ -149,17 +238,54 @@ class IncidentRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [MyTasksPage]
-class MyTasksRoute extends PageRouteInfo<void> {
-  const MyTasksRoute({List<PageRouteInfo>? children})
+/// [LiloPage]
+class LiloRoute extends PageRouteInfo<void> {
+  const LiloRoute({List<PageRouteInfo>? children})
       : super(
-          MyTasksRoute.name,
+          LiloRoute.name,
           initialChildren: children,
         );
 
-  static const String name = 'MyTasksRoute';
+  static const String name = 'LiloRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [MapPage]
+class MapRoute extends PageRouteInfo<MapRouteArgs> {
+  MapRoute({
+    Key? key,
+    required List<DoneWork> doneWorkList,
+    List<PageRouteInfo>? children,
+  }) : super(
+          MapRoute.name,
+          args: MapRouteArgs(
+            key: key,
+            doneWorkList: doneWorkList,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'MapRoute';
+
+  static const PageInfo<MapRouteArgs> page = PageInfo<MapRouteArgs>(name);
+}
+
+class MapRouteArgs {
+  const MapRouteArgs({
+    this.key,
+    required this.doneWorkList,
+  });
+
+  final Key? key;
+
+  final List<DoneWork> doneWorkList;
+
+  @override
+  String toString() {
+    return 'MapRouteArgs{key: $key, doneWorkList: $doneWorkList}';
+  }
 }
 
 /// generated route for
@@ -206,14 +332,37 @@ class SplashRouteRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [TaskPage]
-class TaskRoute extends PageRouteInfo<void> {
-  const TaskRoute({List<PageRouteInfo>? children})
-      : super(
+class TaskRoute extends PageRouteInfo<TaskRouteArgs> {
+  TaskRoute({
+    Key? key,
+    required int id,
+    List<PageRouteInfo>? children,
+  }) : super(
           TaskRoute.name,
+          args: TaskRouteArgs(
+            key: key,
+            id: id,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'TaskRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<TaskRouteArgs> page = PageInfo<TaskRouteArgs>(name);
+}
+
+class TaskRouteArgs {
+  const TaskRouteArgs({
+    this.key,
+    required this.id,
+  });
+
+  final Key? key;
+
+  final int id;
+
+  @override
+  String toString() {
+    return 'TaskRouteArgs{key: $key, id: $id}';
+  }
 }

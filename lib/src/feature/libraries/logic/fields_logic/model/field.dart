@@ -6,18 +6,20 @@ part "field.g.dart";
 
 @JsonSerializable()
 class Field {
-  final int id;
-  final String title;
-  final String fact_area;
-  final String document_area;
-  final String soil_type;
+  final int? id;
+  final String? title;
+  final String? fact_area;
+  final String? document_area;
+  final String? soil_type;
+  final Map<String,dynamic>? shape_gis;
 
   Field(
-      {required this.title,
-      required this.document_area,
-      required this.id,
-      required this.soil_type,
-      required this.fact_area});
+      {this.title,
+      this.shape_gis,
+      this.document_area,
+      this.id,
+      this.soil_type,
+      this.fact_area});
 
   factory Field.fromJson(Map<String, dynamic> map) => _$FieldFromJson(map);
 

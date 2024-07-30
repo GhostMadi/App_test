@@ -10,6 +10,9 @@ DetailsMachine _$DetailsMachineFromJson(Map<String, dynamic> json) =>
     DetailsMachine(
       width: json['width'] as String?,
       id: (json['id'] as num?)?.toInt(),
+      brand: json['brand'] as String?,
+      model: json['model'] as String?,
+      icon: json['icon'] as String?,
       machine_type: $enumDecode(_$MachineTypeEnumMap, json['machine_type']),
       household_number: json['household_number'] as String?,
       registration_number: json['registration_number'] as String?,
@@ -20,6 +23,9 @@ DetailsMachine _$DetailsMachineFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$DetailsMachineToJson(DetailsMachine instance) =>
     <String, dynamic>{
       'id': instance.id,
+      'icon': instance.icon,
+      'brand': instance.brand,
+      'model': instance.model,
       'household_number': instance.household_number,
       'registration_number': instance.registration_number,
       'vin_number': instance.vin_number,

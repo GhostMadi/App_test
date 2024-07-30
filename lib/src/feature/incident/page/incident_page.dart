@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/cupertino.dart';
+
+import 'package:flutter/material.dart';
 @RoutePage()
 class IncidentPage extends StatefulWidget {
   const IncidentPage({super.key});
@@ -11,6 +13,6 @@ class IncidentPage extends StatefulWidget {
 class _IncidentPageState extends State<IncidentPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Placeholder();
   }
 }

@@ -8,7 +8,8 @@ import 'package:flutter_application_2/src/feature/task/widget/tab_bar.dart';
 
 @RoutePage()
 class TaskPage extends StatefulWidget {
-  const TaskPage({super.key});
+  final int id;
+  const TaskPage({super.key, required this.id});
 
   @override
   State<TaskPage> createState() => _TaskPageState();
@@ -18,10 +19,7 @@ class _TaskPageState extends State<TaskPage> {
   @override
   Widget build(BuildContext context) {
     return AutoTabsRouter.tabBar(
-      routes: const [
-        AllRoute(),
-        MyTasksRoute(),
-      ],
+      routes: [const AllRoute(), AllTaskRoute(id: widget.id.toString())],
       builder: (context, child, controller) {
         return Scaffold(
           appBar: AppBar(
@@ -30,7 +28,6 @@ class _TaskPageState extends State<TaskPage> {
               'Задачи и работы',
               style: AppStyle.headingH118SemiBold,
             ),
-            
           ),
           body: Column(
             children: [
@@ -58,7 +55,7 @@ class _TaskPageState extends State<TaskPage> {
                   dividerHeight: 0,
                   tabs: const [
                     Tab(child: TabBarItem(text: 'все')),
-                    Tab(child: TabBarItem(text: 'мои задачи')),
+                    Tab(child: TabBarItem(text: 'все задачи')),
                   ],
                 ),
               ),

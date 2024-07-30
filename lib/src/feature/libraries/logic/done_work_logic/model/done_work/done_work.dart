@@ -9,6 +9,7 @@ class DoneWork {
   List<dynamic>? period;
   int? work;
   int? machine;
+  int? equipment;
   WorkOrderListDetail? work_order;
   String? supervisor_progress_volume;
   DetailDoneWorkLinkedObject? linked_objects;
@@ -19,6 +20,7 @@ class DoneWork {
       this.supervisor_progress_volume,
       this.work_order,
       this.brigades,
+      this.equipment,
       this.linked_objects,
       this.machine,
       this.work});
@@ -34,7 +36,10 @@ class DetailDoneWorkLinkedObject {
   int? field;
   int? staff;
   int? machine;
-  DetailDoneWorkLinkedObject({this.field, this.machine, this.staff});
+  int? business_process;
+  int? culture;
+  DetailDoneWorkLinkedObject(
+      {this.field,this.culture, this.business_process, this.machine, this.staff});
 
   factory DetailDoneWorkLinkedObject.fromJson(Map<String, dynamic> json) =>
       _$DetailDoneWorkLinkedObjectFromJson(json);
@@ -42,48 +47,14 @@ class DetailDoneWorkLinkedObject {
 }
 
 enum Status {
-  in_progress,
-  canceled,
-  partially_completed,
-  completed,
-  not_completed
-}
+  in_progress('in_progress'),
+  canceled('canceled'),
+  partially_completed('partially_completed'),
+  completed('completed'),
+  not_completed('canceled');
 
-extension StatusExtension on Status {
-  static Status fromString(String status) {
-    switch (status) {
-      case 'in_progress':
-        return Status.in_progress;
-      case 'canceled':
-        return Status.canceled;
-      case 'partially_completed':
-        return Status.partially_completed;
-      case 'completed':
-        return Status.completed;
-      case 'not_completed':
-        return Status.not_completed;
-
-      default:
-        return Status.not_completed;
-    }
-  }
-
-  String toJson() {
-    switch (this) {
-      case Status.in_progress:
-        return 'in_progress';
-      case Status.canceled:
-        return 'canceled';
-      case Status.partially_completed:
-        return 'partially_completed';
-      case Status.completed:
-        return 'completed';
-      case Status.not_completed:
-        return 'not_completed';
-      default:
-        return 'not_completed';
-    }
-  }
+  final String localiztion;
+  const Status(this.localiztion);
 }
 
 @JsonSerializable()

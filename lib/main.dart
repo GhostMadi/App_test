@@ -5,9 +5,12 @@ import 'package:flutter_application_2/src/feature/app/widgets/app_configuration.
 import 'package:hive_flutter/adapters.dart';
 
 
+
+
 void main() async {
   await initGetIt();
   await Hive.initFlutter();
   await initHiveSettings();
   runApp(const App());
 }
+ 

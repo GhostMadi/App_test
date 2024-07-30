@@ -42,6 +42,9 @@ enum MachineType {
 @JsonSerializable()
 class DetailsMachine {
   int? id;
+  String? icon;
+  String? brand;
+  String? model;
   String? household_number;
   String? registration_number;
   String? vin_number;
@@ -51,6 +54,9 @@ class DetailsMachine {
   DetailsMachine({
     required this.width,
     required this.id,
+    required this.brand,
+    required this.model,
+    required this.icon,
     required this.machine_type,
     required this.household_number,
     required this.registration_number,
@@ -62,6 +68,9 @@ class DetailsMachine {
   Map<String, dynamic> toJson() => _$DetailsMachineToJson(this);
 
   static final empty = DetailsMachine(
+      icon: '',
+      model: '',
+      brand: '',
       width: '',
       id: 0,
       machine_type: MachineType.unknown,

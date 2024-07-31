@@ -13,6 +13,6 @@ class IncidentPage extends StatefulWidget {
 class _IncidentPageState extends State<IncidentPage> {
   @override
   Widget build(BuildContext context) {
-    return Placeholder();
+    return const Placeholder();
   }
 }

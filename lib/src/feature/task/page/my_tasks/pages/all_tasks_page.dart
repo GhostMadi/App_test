@@ -1,9 +1,9 @@
-
 import 'dart:developer';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/src/core/dependencies/injection_container.dart';
+import 'package:flutter_application_2/src/core/resources/app_colors.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/business_processes_logic/bloc/detail_business_process_bloc.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/business_processes_logic/model/business_processes.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/business_processes_logic/repository/business_processes_repository.dart';
@@ -28,8 +28,8 @@ import 'package:flutter_application_2/src/feature/libraries/logic/works_logic/mo
 import 'package:flutter_application_2/src/feature/libraries/logic/works_logic/repository/works_repository.dart';
 import 'package:flutter_application_2/src/feature/task/page/my_tasks/widget/item_task.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-@RoutePage()
 
+@RoutePage()
 class AllTaskPage extends StatefulWidget {
   final String id;
   const AllTaskPage({super.key, required this.id});
@@ -166,7 +166,6 @@ class _AllTaskPageState extends State<AllTaskPage> {
                                                 orElse: () => Field.empty);
                                         filteredFieldList.add(filteredField);
                                       }
-                                      
                                     }
                                   }),
                                   BlocListener<MachinesBloc, MachinesState>(
@@ -266,7 +265,13 @@ class _AllTaskPageState extends State<AllTaskPage> {
                                         staff: laistFilterStaff[index],
                                         machine: laistFilterdMachines[index]);
                                   } else {
-                                    return const SizedBox();
+                                    return Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Center(
+                                          child: CircularProgressIndicator(
+                                        color: AppColors.blackColor,
+                                      )),
+                                    );
                                   }
                                 })));
                       }),

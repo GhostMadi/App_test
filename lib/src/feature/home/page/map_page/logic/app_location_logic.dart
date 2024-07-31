@@ -1,4 +1,4 @@
-import 'package:flutter_application_2/src/feature/home/model/app_location.dart';
+import 'package:flutter_application_2/src/feature/home/page/map_page/model/app_location.dart';
 import 'package:geolocator/geolocator.dart';
 
 class AppLocationRepository {

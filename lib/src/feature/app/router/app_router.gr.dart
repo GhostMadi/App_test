@@ -53,16 +53,16 @@ abstract class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    HomeRouterRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: WrappedRoute(child: const HomeRouterPage()),
+      );
+    },
     IncidentRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: const IncidentPage(),
-      );
-    },
-    LiloRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const LiloPage(),
       );
     },
     MapRoute.name: (routeData) {
@@ -72,6 +72,7 @@ abstract class _$AppRouter extends RootStackRouter {
         child: MapPage(
           key: args.key,
           doneWorkList: args.doneWorkList,
+          fieldList: args.fieldList,
         ),
       );
     },
@@ -224,6 +225,20 @@ class HomeRouteArgs {
 }
 
 /// generated route for
+/// [HomeRouterPage]
+class HomeRouterRoute extends PageRouteInfo<void> {
+  const HomeRouterRoute({List<PageRouteInfo>? children})
+      : super(
+          HomeRouterRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'HomeRouterRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
 /// [IncidentPage]
 class IncidentRoute extends PageRouteInfo<void> {
   const IncidentRoute({List<PageRouteInfo>? children})
@@ -238,31 +253,19 @@ class IncidentRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [LiloPage]
-class LiloRoute extends PageRouteInfo<void> {
-  const LiloRoute({List<PageRouteInfo>? children})
-      : super(
-          LiloRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'LiloRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [MapPage]
 class MapRoute extends PageRouteInfo<MapRouteArgs> {
   MapRoute({
     Key? key,
     required List<DoneWork> doneWorkList,
+    required List<Field> fieldList,
     List<PageRouteInfo>? children,
   }) : super(
           MapRoute.name,
           args: MapRouteArgs(
             key: key,
             doneWorkList: doneWorkList,
+            fieldList: fieldList,
           ),
           initialChildren: children,
         );
@@ -276,15 +279,18 @@ class MapRouteArgs {
   const MapRouteArgs({
     this.key,
     required this.doneWorkList,
+    required this.fieldList,
   });
 
   final Key? key;
 
   final List<DoneWork> doneWorkList;
 
+  final List<Field> fieldList;
+
   @override
   String toString() {
-    return 'MapRouteArgs{key: $key, doneWorkList: $doneWorkList}';
+    return 'MapRouteArgs{key: $key, doneWorkList: $doneWorkList, fieldList: $fieldList}';
   }
 }
 

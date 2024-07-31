@@ -2,9 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_2/src/feature/auth/pages/app_transfer.dart';
 import 'package:flutter_application_2/src/feature/auth/pages/auth_page.dart';
-import 'package:flutter_application_2/src/feature/home/page/map_page/page/loloo.dart';
+import 'package:flutter_application_2/src/feature/home/page/home_route.dart';
 import 'package:flutter_application_2/src/feature/home/page/map_page/page/map.dart';
 import 'package:flutter_application_2/src/feature/libraries/logic/done_work_logic/model/done_work/done_work.dart';
+import 'package:flutter_application_2/src/feature/libraries/logic/fields_logic/model/field.dart';
 import 'package:flutter_application_2/src/feature/notice/page/notice_page.dart';
 import 'package:flutter_application_2/src/feature/reports/page/reports_page.dart';
 import 'package:flutter_application_2/src/feature/task/page/all/pages/all_page.dart';
@@ -24,11 +25,7 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: SplashRouteRoute.page, initial: true),
         AutoRoute(page: AuthRoute.page),
         AutoRoute(page: AppIndexedRoute.page, children: [
-          AutoRoute(
-              page: HomeRoute.page,
-              path: 'home',
-              maintainState: true,
-              children: [AutoRoute(page: MapRoute.page, path: 'map')]),
+          HomeRouteSelecter.routes,
           AutoRoute(page: IncidentRoute.page),
           AutoRoute(page: NoticeRoute.page),
           AutoRoute(page: ReportsRoute.page),
@@ -38,4 +35,12 @@ class AppRouter extends _$AppRouter {
           ]),
         ]),
       ];
+}
+
+//HomePageAutoRoute
+abstract class HomeRouteSelecter {
+  static final routes = AutoRoute(page: HomeRouterRoute.page, children: [
+    AutoRoute(page: HomeRoute.page, initial: true),
+    AutoRoute(page: MapRoute.page)
+  ]);
 }

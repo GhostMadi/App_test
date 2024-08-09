@@ -67,4 +67,5 @@ class Works {
   factory Works.fromJson(Map<String, dynamic> json) => _$WorksFromJson(json);
 
   Map<String, dynamic> toJson() => _$WorksToJson(this);
+  static final empty = Works(id: 0,name: 'null',category: 0);
 }

@@ -1,0 +1,30 @@
+{
+    "@@locale": "en",
+    "home": "Home",
+    "@home": {},
+
+    "task": "Task",
+    "@task": {},
+
+    "incident": "Incident",
+    "@incident": {},
+
+    "reports": "reports",
+    "@reports": {},
+
+    "notice": "Notice",
+    "@notice": {},
+
+
+    "all":"all",
+    "@all":{},
+
+    "myTask":"MyTask",
+    "@myTask":{},
+
+    "appBarTaskTitle":"Tasks and work",
+    "@appBarTaskTitle":{},
+
+    "appBarMap":"Home > Maps",
+    "@appBarMap":{}
+}

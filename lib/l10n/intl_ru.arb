@@ -1,0 +1,30 @@
+{
+    "@@locale": "ru",
+    "home": "Главная",
+    "@home": {},
+
+    "task": "Здание",
+    "@task": {},
+
+    "incident": "Инцидент",
+    "@incident": {},
+
+    "reports": "Отчет",
+    "@reports": {},
+
+    "notice": "Уведомление",
+    "@notice": {},
+
+    "all":"все",
+    "@all":{},
+
+    "myTask":"мой задачи",
+    "@myTask":{},
+
+    "appBarTaskTitle":"Задачи и работы",
+    "@appBarTaskTitle":{},
+
+
+    "appBarMap":"Главная > Карта",
+    "@appBarMap":{}
+}

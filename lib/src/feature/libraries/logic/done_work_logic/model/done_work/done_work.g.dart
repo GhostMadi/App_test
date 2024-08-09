@@ -13,6 +13,7 @@ DoneWork _$DoneWorkFromJson(Map<String, dynamic> json) => DoneWork(
           ? null
           : WorkOrderListDetail.fromJson(
               json['work_order'] as Map<String, dynamic>),
+      id: (json['id'] as num?)?.toInt(),
       brigades: (json['brigades'] as List<dynamic>?)
           ?.map(
               (e) => DetailDoneWorkBrigade.fromJson(e as Map<String, dynamic>))
@@ -27,6 +28,7 @@ DoneWork _$DoneWorkFromJson(Map<String, dynamic> json) => DoneWork(
     );
 
 Map<String, dynamic> _$DoneWorkToJson(DoneWork instance) => <String, dynamic>{
+      'id': instance.id,
       'period': instance.period,
       'work': instance.work,
       'machine': instance.machine,

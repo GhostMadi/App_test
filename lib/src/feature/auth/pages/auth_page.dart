@@ -96,7 +96,7 @@ class _AuthPageState extends State<AuthPage> {
                     setState(() {
                       isAuth = false;
                     });
-                    log(state.toString());
+                    log(state.error.toString());
                     log('failed');
                   } else if (state is AuthSuccess) {
                     setState(() {
@@ -121,9 +121,8 @@ class _AuthPageState extends State<AuthPage> {
                           if (authKey.currentState!.validate()) {}
                           context.read<AuthBloc>().add(
                                 LogIn(
-                                  email: emailController.text.trim(),
-                                  password: passwordController.text.trim(),
-                                ),
+                                    email: emailController.text,
+                                    password: passwordController.text),
                               );
                         },
                         text: state is AuthLoading ? 'Loading' : 'Log in',

@@ -17,4 +17,6 @@ class AppStyle {
       fontSize: 18, fontWeight: FontWeight.w600, color: AppColors.text600);
   static TextStyle textP410Medium = const TextStyle(
       fontSize: 10, fontWeight: FontWeight.w500, color: AppColors.text700);
+  static TextStyle text900 =
+      const TextStyle(fontWeight: FontWeight.w700, fontSize: 10,color: AppColors.text900);
 }

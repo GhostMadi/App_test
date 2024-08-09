@@ -15,18 +15,14 @@ abstract class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
-    AllRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AllPage(),
-      );
-    },
     AllTaskRoute.name: (routeData) {
-      final args = routeData.argsAs<AllTaskRouteArgs>();
+      final args = routeData.argsAs<AllTaskRouteArgs>(
+          orElse: () => const AllTaskRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: AllTaskPage(
           key: args.key,
+          listDoneWork: args.listDoneWork,
           id: args.id,
         ),
       );
@@ -43,22 +39,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const AuthPage(),
       );
     },
-    HomeRoute.name: (routeData) {
-      final args = routeData.argsAs<HomeRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: HomePage(
-          key: args.key,
-          id: args.id,
-        ),
-      );
-    },
-    HomeRouterRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: WrappedRoute(child: const HomeRouterPage()),
-      );
-    },
     IncidentRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -71,9 +51,16 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: MapPage(
           key: args.key,
+          listMaps: args.listMaps,
           doneWorkList: args.doneWorkList,
           fieldList: args.fieldList,
         ),
+      );
+    },
+    MyTaskRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const MyTaskPage(),
       );
     },
     NoticeRoute.name: (routeData) {
@@ -95,11 +82,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     TaskRoute.name: (routeData) {
-      final args = routeData.argsAs<TaskRouteArgs>();
+      final args =
+          routeData.argsAs<TaskRouteArgs>(orElse: () => const TaskRouteArgs());
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: TaskPage(
           key: args.key,
+          listField: args.listField,
+          listDoneWork: args.listDoneWork,
           id: args.id,
         ),
       );
@@ -108,30 +98,18 @@ abstract class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
-/// [AllPage]
-class AllRoute extends PageRouteInfo<void> {
-  const AllRoute({List<PageRouteInfo>? children})
-      : super(
-          AllRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'AllRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [AllTaskPage]
 class AllTaskRoute extends PageRouteInfo<AllTaskRouteArgs> {
   AllTaskRoute({
     Key? key,
-    required String id,
+    List<DoneWork>? listDoneWork,
+    String? id,
     List<PageRouteInfo>? children,
   }) : super(
           AllTaskRoute.name,
           args: AllTaskRouteArgs(
             key: key,
+            listDoneWork: listDoneWork,
             id: id,
           ),
           initialChildren: children,
@@ -146,16 +124,19 @@ class AllTaskRoute extends PageRouteInfo<AllTaskRouteArgs> {
 class AllTaskRouteArgs {
   const AllTaskRouteArgs({
     this.key,
-    required this.id,
+    this.listDoneWork,
+    this.id,
   });
 
   final Key? key;
 
-  final String id;
+  final List<DoneWork>? listDoneWork;
+
+  final String? id;
 
   @override
   String toString() {
-    return 'AllTaskRouteArgs{key: $key, id: $id}';
+    return 'AllTaskRouteArgs{key: $key, listDoneWork: $listDoneWork, id: $id}';
   }
 }
 
@@ -188,57 +169,6 @@ class AuthRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [HomePage]
-class HomeRoute extends PageRouteInfo<HomeRouteArgs> {
-  HomeRoute({
-    Key? key,
-    required int? id,
-    List<PageRouteInfo>? children,
-  }) : super(
-          HomeRoute.name,
-          args: HomeRouteArgs(
-            key: key,
-            id: id,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'HomeRoute';
-
-  static const PageInfo<HomeRouteArgs> page = PageInfo<HomeRouteArgs>(name);
-}
-
-class HomeRouteArgs {
-  const HomeRouteArgs({
-    this.key,
-    required this.id,
-  });
-
-  final Key? key;
-
-  final int? id;
-
-  @override
-  String toString() {
-    return 'HomeRouteArgs{key: $key, id: $id}';
-  }
-}
-
-/// generated route for
-/// [HomeRouterPage]
-class HomeRouterRoute extends PageRouteInfo<void> {
-  const HomeRouterRoute({List<PageRouteInfo>? children})
-      : super(
-          HomeRouterRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'HomeRouterRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
 /// [IncidentPage]
 class IncidentRoute extends PageRouteInfo<void> {
   const IncidentRoute({List<PageRouteInfo>? children})
@@ -257,6 +187,7 @@ class IncidentRoute extends PageRouteInfo<void> {
 class MapRoute extends PageRouteInfo<MapRouteArgs> {
   MapRoute({
     Key? key,
+    required List<DetailMap> listMaps,
     required List<DoneWork> doneWorkList,
     required List<Field> fieldList,
     List<PageRouteInfo>? children,
@@ -264,6 +195,7 @@ class MapRoute extends PageRouteInfo<MapRouteArgs> {
           MapRoute.name,
           args: MapRouteArgs(
             key: key,
+            listMaps: listMaps,
             doneWorkList: doneWorkList,
             fieldList: fieldList,
           ),
@@ -278,11 +210,14 @@ class MapRoute extends PageRouteInfo<MapRouteArgs> {
 class MapRouteArgs {
   const MapRouteArgs({
     this.key,
+    required this.listMaps,
     required this.doneWorkList,
     required this.fieldList,
   });
 
   final Key? key;
+
+  final List<DetailMap> listMaps;
 
   final List<DoneWork> doneWorkList;
 
@@ -290,8 +225,22 @@ class MapRouteArgs {
 
   @override
   String toString() {
-    return 'MapRouteArgs{key: $key, doneWorkList: $doneWorkList, fieldList: $fieldList}';
+    return 'MapRouteArgs{key: $key, listMaps: $listMaps, doneWorkList: $doneWorkList, fieldList: $fieldList}';
   }
+}
+
+/// generated route for
+/// [MyTaskPage]
+class MyTaskRoute extends PageRouteInfo<void> {
+  const MyTaskRoute({List<PageRouteInfo>? children})
+      : super(
+          MyTaskRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'MyTaskRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
 }
 
 /// generated route for
@@ -341,12 +290,16 @@ class SplashRouteRoute extends PageRouteInfo<void> {
 class TaskRoute extends PageRouteInfo<TaskRouteArgs> {
   TaskRoute({
     Key? key,
-    required int id,
+    List<Field>? listField,
+    List<DoneWork>? listDoneWork,
+    int? id,
     List<PageRouteInfo>? children,
   }) : super(
           TaskRoute.name,
           args: TaskRouteArgs(
             key: key,
+            listField: listField,
+            listDoneWork: listDoneWork,
             id: id,
           ),
           initialChildren: children,
@@ -360,15 +313,21 @@ class TaskRoute extends PageRouteInfo<TaskRouteArgs> {
 class TaskRouteArgs {
   const TaskRouteArgs({
     this.key,
-    required this.id,
+    this.listField,
+    this.listDoneWork,
+    this.id,
   });
 
   final Key? key;
 
-  final int id;
+  final List<Field>? listField;
+
+  final List<DoneWork>? listDoneWork;
+
+  final int? id;
 
   @override
   String toString() {
-    return 'TaskRouteArgs{key: $key, id: $id}';
+    return 'TaskRouteArgs{key: $key, listField: $listField, listDoneWork: $listDoneWork, id: $id}';
   }
 }

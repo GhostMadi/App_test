@@ -19,4 +19,5 @@ class AppColors {
   static const Color text600 = Color(0xff86919D);
   static const Color text700 = Color(0xff576674);
   static const Color text800 = Color(0xff576674);
+  static const Color text900 = Color(0xff1D2126);
 }

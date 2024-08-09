@@ -1,20 +1,9 @@
 part of 'staff_bloc.dart';
 
-@immutable
-sealed class StaffState {}
+@freezed
+class StaffState with _$StaffState {
+  const factory StaffState.initial() = Initial;
+  const factory StaffState.success({required List<DetailStaff> listStaff})=Success;
+  const factory StaffState.failed({required CatchException error})=Failed;
 
-final class StaffInitial extends StaffState {}
-
-class StaffSuccess extends StaffState {
-  final List<DetailStaff> staffList;
-
-  StaffSuccess({required this.staffList});
 }
-
-class StaffFailed extends StaffState {
-  final CatchException e;
-
-  StaffFailed({required this.e});
-}
-
-class StaffLoading extends StaffState {}

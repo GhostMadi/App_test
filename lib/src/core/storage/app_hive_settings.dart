@@ -5,6 +5,7 @@ initHiveSettings() async {
   await Hive.openBox(AppConstants.token);
   await Hive.openBox(AppConstants.refresh);
   await Hive.openBox(AppConstants.timeSaved);
+  
 }
 
 class AppHiveSettings {

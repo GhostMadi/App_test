@@ -6,6 +6,7 @@ part "done_work.g.dart";
 
 @JsonSerializable()
 class DoneWork {
+  int? id;
   List<dynamic>? period;
   int? work;
   int? machine;
@@ -19,6 +20,7 @@ class DoneWork {
       {this.period,
       this.supervisor_progress_volume,
       this.work_order,
+      this.id,
       this.brigades,
       this.equipment,
       this.linked_objects,
@@ -39,7 +41,11 @@ class DetailDoneWorkLinkedObject {
   int? business_process;
   int? culture;
   DetailDoneWorkLinkedObject(
-      {this.field,this.culture, this.business_process, this.machine, this.staff});
+      {this.field,
+      this.culture,
+      this.business_process,
+      this.machine,
+      this.staff});
 
   factory DetailDoneWorkLinkedObject.fromJson(Map<String, dynamic> json) =>
       _$DetailDoneWorkLinkedObjectFromJson(json);
